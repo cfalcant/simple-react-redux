@@ -3,15 +3,19 @@ import './App.css';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { incrementCounter } from './redux/actions'
+import { decrementCounter } from './redux/actions'
 
 class App extends Component {
   render() {
-    
+
     return (
       <div className="App">
         <button
           onClick={() => this.props.increment()}
         >+</button>
+        <button
+          onClick={() => this.props.decrement()}
+        >-</button>
         {this.props.counter}
       </div>
     );
@@ -19,7 +23,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  
+
   return {
     counter: state.counter
   }
@@ -28,6 +32,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     increment: bindActionCreators(incrementCounter, dispatch),
+    decrement: bindActionCreators(decrementCounter, dispatch)
   }
 }
 
